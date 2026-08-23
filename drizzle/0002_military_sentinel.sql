@@ -1,0 +1,1 @@
+ALTER TABLE "items" ADD COLUMN "bought" boolean DEFAULT false NOT NULL;

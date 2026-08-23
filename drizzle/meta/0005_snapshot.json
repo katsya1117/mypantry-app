@@ -1,0 +1,212 @@
+{
+  "id": "87a7be81-5aaa-4e4c-b1dd-0027d8ea6476",
+  "prevId": "d694905f-4e5a-4f71-a520-98252f8412ae",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.categories": {
+      "name": "categories",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "household_id": {
+          "name": "household_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "categories_household_id_households_id_fk": {
+          "name": "categories_household_id_households_id_fk",
+          "tableFrom": "categories",
+          "tableTo": "households",
+          "columnsFrom": [
+            "household_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "categories_name_household_id_unique": {
+          "name": "categories_name_household_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name",
+            "household_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.households": {
+      "name": "households",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "share_code": {
+          "name": "share_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "households_share_code_unique": {
+          "name": "households_share_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "share_code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.items": {
+      "name": "items",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category_id": {
+          "name": "category_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stock_level": {
+          "name": "stock_level",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "want_to_buy": {
+          "name": "want_to_buy",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tracked": {
+          "name": "tracked",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bought": {
+          "name": "bought",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "household_id": {
+          "name": "household_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "items_category_id_categories_id_fk": {
+          "name": "items_category_id_categories_id_fk",
+          "tableFrom": "items",
+          "tableTo": "categories",
+          "columnsFrom": [
+            "category_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "items_household_id_households_id_fk": {
+          "name": "items_household_id_households_id_fk",
+          "tableFrom": "items",
+          "tableTo": "households",
+          "columnsFrom": [
+            "household_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "items_name_category_id_household_id_unique": {
+          "name": "items_name_category_id_household_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name",
+            "category_id",
+            "household_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
