@@ -15,7 +15,7 @@ import {
   deleteCatalogEntryAction,
 } from "@/lib/catalog-action";
 import { toast } from "sonner";
-import { MoreHorizontal, MoreVertical, Trash2 } from "lucide-react";
+import { MoreHorizontal, Trash2 } from "lucide-react";
 import type { Catalog, Category } from "@/lib/types";
 import {
   Select,

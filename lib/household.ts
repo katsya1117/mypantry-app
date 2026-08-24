@@ -1,5 +1,8 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { db } from "./db";
+import { households } from "./schema";
+import { eq } from "drizzle-orm";
 
 const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
@@ -15,7 +18,12 @@ export const getHouseholdId = async (): Promise<number> => {
   const cookieStore = await cookies();
   const value = cookieStore.get("householdId")?.value;
   if (!value) redirect("/join");
-  return Number(value);
+  const id = Number(value);
+  const household = (
+    await db.select().from(households).where(eq(households.id, id))
+  )[0];
+  if (!household) redirect("/join");
+  return id;
 };
 
 export const hasHouseholdId = async (): Promise<boolean> => {

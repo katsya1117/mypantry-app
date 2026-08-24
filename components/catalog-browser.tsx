@@ -5,8 +5,6 @@ import { useState } from "react";
 import { addToPantryAction } from "@/lib/action";
 import { CheckCircle2 } from "lucide-react";
 import { CatalogItemEditDialog } from "./catalog-item-edit-dialog";
-import Link from "next/link";
-import { Button } from "./ui/button";
 
 export const CatalogBrowser = ({
   categories,
