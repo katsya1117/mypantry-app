@@ -32,7 +32,7 @@ export const createHouseholdAction = async () => {
     { name: "スパイス", sortOrder: 8, householdId: newHousehold.id },
     { name: "飲料", sortOrder: 9, householdId: newHousehold.id },
     { name: "生活用品", sortOrder: 10, householdId: newHousehold.id },
-    { name: "その他", sortOrder: 11, householdId: newHousehold.id },
+    { name: "その他食品", sortOrder: 11, householdId: newHousehold.id },
   ]);
   return newHousehold.shareCode;
 };

@@ -39,25 +39,25 @@ export const categoriesPropsMap: Record<
   },
   "乾物": {
     icon: FishSymbol,
-    color: "bg-rose-100 text-rose-700",
+    color: "bg-cyan-100 text-cyan-700",
   },
   "調味料": {
     icon: PillBottle,
-    color: "bg-pink-100 text-pink-700",
+    color: "bg-emerald-100 text-emerald-700",
   },
   "スパイス": {
     icon: Leaf,
-    color: "bg-fuchsia-100 text-fuchsia-700",
+    color: "bg-lime-100 text-lime-700",
   },
   "飲料": {
     icon: CupSoda,
-    color: "bg-teal-100 text-teal-700",
+    color: "bg-slate-100 text-slate-700",
   },
   "生活用品": {
     icon: SprayCan,
     color: "bg-gray-100 text-gray-700",
   },
-  "その他": {
+  "その他食品": {
     icon: PaperBag,
     color: "bg-gray-100 text-gray-700",
   },
