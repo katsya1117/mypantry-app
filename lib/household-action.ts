@@ -14,9 +14,25 @@ export const createHouseholdAction = async () => {
   const cookieStore = await cookies();
   cookieStore.set("householdId", String(newHousehold.id));
   await db.insert(categories).values([
-    { name: "Processed foods", sortOrder: 1, householdId: newHousehold.id },
-    { name: "Meat & Fish", sortOrder: 2, householdId: newHousehold.id },
-    { name: "Dairy & Eggs", sortOrder: 3, householdId: newHousehold.id },
+    {
+      name: "野菜・果物・きのこ",
+      sortOrder: 1,
+      householdId: newHousehold.id,
+    },
+    { name: "肉・魚・加工品", sortOrder: 2, householdId: newHousehold.id },
+    { name: "乳製品・卵", sortOrder: 3, householdId: newHousehold.id },
+    {
+      name: "大豆加工品・漬物・缶詰",
+      sortOrder: 4,
+      householdId: newHousehold.id,
+    },
+    { name: "米・パン・麺", sortOrder: 5, householdId: newHousehold.id },
+    { name: "乾物", sortOrder: 6, householdId: newHousehold.id },
+    { name: "調味料", sortOrder: 7, householdId: newHousehold.id },
+    { name: "スパイス", sortOrder: 8, householdId: newHousehold.id },
+    { name: "飲料", sortOrder: 9, householdId: newHousehold.id },
+    { name: "生活用品", sortOrder: 10, householdId: newHousehold.id },
+    { name: "その他", sortOrder: 11, householdId: newHousehold.id },
   ]);
   return newHousehold.shareCode;
 };
