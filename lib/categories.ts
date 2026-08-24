@@ -3,11 +3,11 @@ import {
   Carrot,
   Beef,
   Milk,
-  Package,
+  Bean,
   Wheat,
-  Package2,
-  Droplet,
-  FlaskConical,
+  FishSymbol,
+  PillBottle,
+  Leaf,
   CupSoda,
   SprayCan,
   PaperBag,
@@ -30,7 +30,7 @@ export const categoriesPropsMap: Record<
     color: "bg-yellow-100 text-yellow-700",
   },
   "大豆加工品・漬物・缶詰": {
-    icon: Package,
+    icon: Bean,
     color: "bg-amber-100 text-amber-700",
   },
   "米・パン・麺": {
@@ -38,24 +38,24 @@ export const categoriesPropsMap: Record<
     color: "bg-orange-100 text-orange-700",
   },
   "乾物": {
-    icon: Package2,
-    color: "bg-stone-100 text-stone-700",
+    icon: FishSymbol,
+    color: "bg-rose-100 text-rose-700",
   },
   "調味料": {
-    icon: Droplet,
-    color: "bg-teal-100 text-teal-700",
+    icon: PillBottle,
+    color: "bg-pink-100 text-pink-700",
   },
   "スパイス": {
-    icon: FlaskConical,
-    color: "bg-rose-100 text-rose-700",
+    icon: Leaf,
+    color: "bg-fuchsia-100 text-fuchsia-700",
   },
   "飲料": {
     icon: CupSoda,
-    color: "bg-blue-100 text-blue-700",
+    color: "bg-teal-100 text-teal-700",
   },
   "生活用品": {
     icon: SprayCan,
-    color: "bg-purple-100 text-purple-700",
+    color: "bg-gray-100 text-gray-700",
   },
   "その他": {
     icon: PaperBag,
