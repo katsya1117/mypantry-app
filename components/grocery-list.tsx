@@ -35,8 +35,8 @@ export const GroceryList = ({ initialItems }: { initialItems: Item[] }) => {
   }, {});
 
   const updateStock = async (v: number, currentStock: stockNum) => {
-    setItems(
-      items.map((i) =>
+    setItems((prev) =>
+      prev.map((i) =>
         i.id === v ? { ...i, stockLevel: nextStock(i.stockLevel) } : i,
       ),
     );
@@ -44,14 +44,14 @@ export const GroceryList = ({ initialItems }: { initialItems: Item[] }) => {
   };
 
   const toggleShoppingList = async (v: number, currentWantToBuy: boolean) => {
-    setItems(
-      items.map((i) => (i.id === v ? { ...i, wantToBuy: !i.wantToBuy } : i)),
+    setItems((prev) =>
+      prev.map((i) => (i.id === v ? { ...i, wantToBuy: !i.wantToBuy } : i)),
     );
     await toggleWantToBuyAction(v, currentWantToBuy);
   };
 
   const deleteItem = async (id: number) => {
-    setItems(items.filter((item) => id !== item.id));
+    setItems((prev) => prev.filter((item) => id !== item.id));
     await deleteItemsAction(id);
   };
 

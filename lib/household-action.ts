@@ -6,13 +6,21 @@ import { categories, households } from "./schema";
 import { generateShareCode, getHouseholdId } from "./household";
 import { eq } from "drizzle-orm";
 
+const COOKIE_OPTIONS = {
+  maxAge: 60 * 60 * 24 * 365,
+  httpOnly: true,
+  sameSite: "lax",
+  secure: process.env.NODE_ENV === "production",
+  path: "/",
+} as const;
+
 export const createHouseholdAction = async () => {
   const genCode = generateShareCode();
   const newHousehold = (
     await db.insert(households).values({ shareCode: genCode }).returning()
   )[0];
   const cookieStore = await cookies();
-  cookieStore.set("householdId", String(newHousehold.id));
+  cookieStore.set("householdId", String(newHousehold.id), COOKIE_OPTIONS);
   await db.insert(categories).values([
     {
       name: "野菜・果物・きのこ",
@@ -43,7 +51,7 @@ export const joinHouseholdAction = async (code: string) => {
   )[0];
   if (target) {
     const cookieStore = await cookies();
-    cookieStore.set("householdId", String(target.id));
+    cookieStore.set("householdId", String(target.id), COOKIE_OPTIONS);
     return { success: true };
   } else {
     return { success: false, error: "コードが違います" };
